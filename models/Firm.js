@@ -4,14 +4,10 @@ const firmSchema = new mongoose.Schema(
   {
     firmName: {
       type: String,
-      required: [true, "Firm name is required"],
+      required: [true, "Firm name and address is required"],
       trim: true,
     },
-    address: {
-      type: String,
-      required: [true, "Address is required"],
-      trim: true,
-    },
+
     gstin: {
       type: String,
       required: [true, "GSTIN is required"],

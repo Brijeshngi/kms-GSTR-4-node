@@ -6,15 +6,15 @@ const router = express.Router();
 // ➕ Add new firm
 router.post("/add", async (req, res) => {
   try {
-    const { firmName, address, gstin } = req.body;
+    const { firmName, gstin } = req.body;
 
-    if (!firmName || !address || !gstin) {
+    if (!firmName || !gstin) {
       return res
         .status(400)
         .json({ success: false, message: "All fields are required" });
     }
 
-    const firm = await Firm.create({ firmName, address, gstin });
+    const firm = await Firm.create({ firmName, gstin });
 
     res.status(201).json({
       success: true,
@@ -76,11 +76,11 @@ router.delete("/:id", async (req, res) => {
 // ✏️ Update firm by ID
 router.put("/:id", async (req, res) => {
   try {
-    const { firmName, address, gstin } = req.body;
+    const { firmName, gstin } = req.body;
 
     const firm = await Firm.findByIdAndUpdate(
       req.params.id,
-      { firmName, address, gstin },
+      { firmName, gstin },
       { new: true, runValidators: true }
     );
 
