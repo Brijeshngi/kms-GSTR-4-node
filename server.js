@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 import purchaseRoutes from "./routes/purchaseRoutes.js";
+import firmRoutes from "./routes/firmRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use("/api/purchase", purchaseRoutes);
+app.use("/api/firms", firmRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
