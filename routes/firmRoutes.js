@@ -1,7 +1,11 @@
 import express from "express";
 import Firm from "../models/Firm.js";
+import { isAuthenticated } from "../middleware/auth.js";
 
 const router = express.Router();
+
+// 🔐 All firm features require active, authenticated user
+router.use(isAuthenticated);
 
 // ➕ Add new firm
 router.post("/add", async (req, res) => {

@@ -5,6 +5,7 @@ import cors from "cors";
 
 import purchaseRoutes from "./routes/purchaseRoutes.js";
 import firmRoutes from "./routes/firmRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,7 @@ mongoose
 
 app.use("/api/purchase", purchaseRoutes);
 app.use("/api/firms", firmRoutes);
+app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -1,12 +1,12 @@
-// purchaseRoutes.js content
 import { Router } from "express";
+import { isAuthenticated } from "../middleware/auth.js";
+
+import { getAll, create, update, remove } from "../controllers/purchaseController.js";
+
 const router = Router();
-import {
-  getAll,
-  create,
-  update,
-  remove,
-} from "../controllers/purchaseController.js";
+
+// 🔐 All purchase features require active, authenticated user
+router.use(isAuthenticated);
 
 router.get("/", getAll);
 router.post("/", create);
